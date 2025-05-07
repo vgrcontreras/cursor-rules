@@ -1,0 +1,49 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+  # Documentation requirements
+  - selector: python
+    documentation:
+      # Project documentation
+      project_docs:
+        enabled: true
+        output_path: "docs/"
+        generate_on_init: true
+        templates:
+          - "README.md"
+          - "ARCHITECTURE.md"
+          - "API.md"
+          - "DEVELOPMENT.md"
+        
+      # Function and class documentation
+      code_docs:
+        enabled: true
+        style: "google"          # Google-style docstrings
+        require_docstrings:
+          - "class"
+          - "function"
+          - "method"
+          - "module"
+        
+      # Change documentation
+      change_docs:
+        enabled: true
+        output_path: "docs/changes/"
+        on_commit: true          # Generate change docs on commit
+        format: "markdown"
+        template: |
+          # Changes: {date}
+          
+          ## Files Modified
+          {modified_files}
+          
+          ## Summary of Changes
+          {change_summary}
+          
+          ## Detailed Explanation
+          {change_details}
+          
+          ## Potential Impacts
+          {impact_analysis}

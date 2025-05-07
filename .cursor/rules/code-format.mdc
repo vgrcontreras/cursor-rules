@@ -1,0 +1,94 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Cursor Rules for Python Backend App
+# Based on ruff configuration
+
+rules:
+  # Line length limit of 79 characters
+  - selector: python
+    line_length: 79
+    
+  # Enforce single quotes for strings
+  - selector: python
+    preferred_quotes: single
+    
+  # Apply ruff linting rules (Isort, Flake8, pycodestyle, Pylint, Pytest)
+  - selector: python
+    linter: ruff
+    linting_rules:
+      - import-sorting         # I
+      - flake8                 # F
+      - pycodestyle            # E
+      - pycodestyle-warnings   # W
+      - pylint                 # PL
+      - pytest                 # PT
+      
+  # Exclude migrations from linting
+  - selector: python
+    exclude_patterns:
+      - '**/migrations/**'
+      
+  # Enable preview features to match ruff config
+  - selector: python
+    enable_preview_features: true
+    
+  # Auto-formatting settings
+  - selector: python
+    auto_format: true
+    format_on_save: true
+
+  # Ensure newline at end of file (prevents Ruff W292)
+  - selector: python
+    ensure_newline_at_eof: true
+    trailing_newline: true
+
+# Whitespace and Line Length Standards
+
+## Whitespace Rules
+- Remove all trailing whitespace at the end of lines (Ruff W293)
+- No empty lines should contain whitespace characters
+- Ensure consistent indentation (4 spaces for Python code)
+- No tabs, only spaces for indentation
+- One blank line between functions and classes
+- Two blank lines before top-level class and function definitions
+
+## Line Length Rules
+- Maximum line length is 79 characters (Ruff E501)
+- Comments must also respect the 79-character limit
+- If a comment would exceed the limit, it should be:
+  - Split into multiple lines, or
+  - Shortened appropriately
+- Long strings and expressions should be broken over multiple lines
+- When breaking expressions, indent the continued line appropriately
+
+## Examples
+
+### Good Example (Correct):
+```python
+def example_function():
+    """This is a docstring that respects the 79-character limit by breaking
+    into multiple lines when needed.
+    """
+    # This is a comment that stays within the 79-character line limit
+    some_long_variable = (value1 +
+                          value2 +
+                          value3)
+    return some_long_variable
+```
+
+### Bad Example (Incorrect):
+```python
+def example_function():  
+    """This is a very long docstring that exceeds the 79-character limit and should be broken into multiple lines."""    
+    # This comment is too long and exceeds the 79-character limit which violates our standards
+    some_long_variable = value1 + value2 + value3
+    return some_long_variable
+```
+
+## Automatic Enforcement
+- Run `ruff` linter before committing code
+- Configure editor to remove trailing whitespace on save
+- Use editor guidelines to visualize the 79-character limit

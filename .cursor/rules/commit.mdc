@@ -1,0 +1,11 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+  # Ensure commit messages follow conventional commits
+  - selector: git
+    commit_message:
+      format: "conventional"
+      require_issue_reference: true
+      require_change_documentation: true
