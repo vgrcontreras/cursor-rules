@@ -73,7 +73,3 @@ Contribuições são bem-vindas! Se você tem regras adicionais ou melhorias par
 3. Commit suas mudanças (`git commit -m 'feat: adiciona nova regra'`)
 4. Push para a branch (`git push origin feature/nova-regra`)
 5. Abra um Pull Request
-
-## 📝 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
